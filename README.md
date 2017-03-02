@@ -70,7 +70,7 @@ name        | String | Trajectory's name                       | `"name": "A1"`
 {
   "message": "Success",
   "data": {
-    "token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJici5jb20uYWxhdmFkZWlyYWFwaS5kb21haW4uRHJpdmVyQDZjMDdlMjM1In0.KJY01JSCI-G1opysVRsVRMR7_8nrmy6gu_YZDTOcbWo",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3Mi...",
     "profile": {
       "email": "motorista@email.com"
     },
