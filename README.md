@@ -149,24 +149,6 @@ message | String | Response message | `"message": "Missing or invalid access tok
 status: 401
 ```
 
-###Using the authentication token
-Send the token as a header parameter named "X-API-TOKEN" on all requests, except authentication.
-
-####Response with missing or invalid authentication token
-
-Error:
-
-Field   | Type   | Description      | Example
-------- | ------ | ---------------- | ----------------------------------------
-message | String | Response message | `"message": "Missing or invalid access token"`
-
-```json
-{
-  "message": "Missing or invalid access token"
-},
-status: 401
-```
-
 ## Visits
 
 ###Requesting visits by driver
