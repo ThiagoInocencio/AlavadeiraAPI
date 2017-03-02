@@ -181,7 +181,7 @@ Data Object:
 
 Field         | Type   | Description                 | Example
 ------------- | ------ | --------------------------- | -------------------------------
-id_driver     | Number | Driver's ID                 | `"driver_id": 1`
+id_driver     | Number | Driver's ID                 | `"id_driver": 1`
 scheduled_for | String | Scheduled date _yyyy-mm-dd_ | `"scheduled_for": "2017-03-02"`
 visits        | Array  | Array of visits             | `"visits": [{}, {}, {}]`
 
