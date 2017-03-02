@@ -22,7 +22,4 @@ public class ServerReturnStatusException extends WebApplicationException {
         super(Response.status(status).entity( new Gson().toJson(message)).type("application/json").build());
         		
     }
-    
-    
-
 }

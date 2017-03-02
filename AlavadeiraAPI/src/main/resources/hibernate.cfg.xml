@@ -4,11 +4,14 @@
 	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 		<!-- Mapeamento das classes Java -->
-		<mapping class="br.com.alavadeiraapi.domain.Carro" />
 		<mapping class="br.com.alavadeiraapi.domain.Driver" />
 		<mapping class="br.com.alavadeiraapi.domain.Auth" />
 		<mapping class="br.com.alavadeiraapi.domain.Trajectory" />
+		<mapping class="br.com.alavadeiraapi.domain.Address" />
+		<mapping class="br.com.alavadeiraapi.domain.Visit" />
+		<mapping class="br.com.alavadeiraapi.domain.Customer" />
+		<mapping class="br.com.alavadeiraapi.domain.Deliverable" />
 	</session-factory>
 </hibernate-configuration>

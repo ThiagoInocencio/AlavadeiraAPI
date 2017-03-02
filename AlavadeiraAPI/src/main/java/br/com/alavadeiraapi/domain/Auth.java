@@ -26,7 +26,12 @@ public class Auth implements Serializable {
 	private Date expire_date;
 	@Column(nullable = false, length = 75)
 	private Integer id_driver;
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getToken() {
 		return token;
 	}
@@ -36,17 +41,16 @@ public class Auth implements Serializable {
 	public Date getExpire_date() {
 		return expire_date;
 	}
-	
 	public void setExpire_date(Date expire_date) {
 		this.expire_date = expire_date;
 	}
-	
 	public Integer getId_driver() {
 		return id_driver;
 	}
-	
 	public void setId_driver(Integer id_driver) {
 		this.id_driver = id_driver;
 	}
-	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

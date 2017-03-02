@@ -13,19 +13,19 @@ public class DriverService {
 	@Autowired
 	private DriverDAO db;
 
-	// Salva ou atualiza o carro
+	// Salva ou atualiza o motorista
 	@Transactional(rollbackFor = Exception.class)
 	public boolean save(Driver drive) {
 		db.save(drive);
 		return true;
 	}
 	
-	// Busca um motorista pelo email
+	// Busca um motorista pelo e-mail
 	public Driver getDriver(String email) {
 		return db.getDriverByEmail(email);
 	}
 	
-	// Autenticar motorista
+	// Busca um motorista pelo e-mail e pela sua senha
 	public Driver loadDriver(String email, String password) {
 		return db.getDriverByEmailPassword(email, password);
 	}

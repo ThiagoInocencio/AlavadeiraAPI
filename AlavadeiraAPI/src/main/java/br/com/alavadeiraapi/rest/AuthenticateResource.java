@@ -28,7 +28,6 @@ import br.com.alavadeiraapi.domain.service.AuthService;
 import br.com.alavadeiraapi.domain.service.DriverService;
 import br.com.alavadeiraapi.util.ServerReturnStatusException;
 
-
 @Path("/authenticate")
 @Produces(MediaType.APPLICATION_JSON + ";charset=iso-8859-1")
 @Consumes(MediaType.APPLICATION_JSON + ";charset=iso-8859-1")
@@ -72,12 +71,16 @@ public class AuthenticateResource {
 			    //Invalid Signing configuration / Couldn't convert Claims.
 			}
 			
+			// Cria ou atualiza o token do motorista
 			loadAuth(authData.getToken(), driver.getId());
 			
 			authData.setProfile(profile);
+			
+			// Retira da resposta os campos password e email
+			driver.setPassword(null);
+			driver.setEmail(null);
+			
 			authData.setDriver(driver);
-			
-			
 			
 			response.setData(authData);
 			
@@ -107,6 +110,7 @@ public class AuthenticateResource {
 		Date today = new Date();    
 		Date tomorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24));
 		
+		// Caso o motorista não tenha uma autenticação
 		if(auth == null) {
 			
 			auth = new Auth();
@@ -119,11 +123,10 @@ public class AuthenticateResource {
 			authservice.save(auth);
 		}
 		
+		// Atualiza a data de expiração
 		auth.setExpire_date(tomorrow);
 		auth.setToken(token);
 		
 		authservice.save(auth);
 	}
-	
-	
 }

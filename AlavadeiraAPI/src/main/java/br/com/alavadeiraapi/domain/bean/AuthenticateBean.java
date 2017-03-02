@@ -28,6 +28,4 @@ public class AuthenticateBean {
 	public void setProfile_type(String profile_type) {
 		this.profile_type = profile_type;
 	}
-	
-	
 }

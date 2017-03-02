@@ -20,14 +20,11 @@ public class AuthenticationDataBean {
 		return profile;
 	}
 	public void setProfile(HashMap<String, String> profile) {
-		this.profile =  profile;
+		this.profile = profile;
 	}
-	
-
 	public Driver getDriver() {
 		return driver;
 	}
-	
 	public void setDriver(Driver driver) {
 		this.driver = driver;
 	}

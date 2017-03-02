@@ -13,12 +13,17 @@ public class AuthService {
 	@Autowired
 	private AuthDAO db;
 
-	// Busca um carro pelo id
+	// Busca uma autenticação pelo id
 	public Auth getAuth(Integer id_driver) {
 		return db.getAuthByIdDriver(id_driver);
 	}
+	
+	// Busca uma autenticação pelo token
+	public Auth getAuthByToken(String token) {
+		return db.getAuthByToken(token);
+	}
 
-	// Salva ou atualiza o carro
+	// salva ou atualiza uma autenticação
 	@Transactional(rollbackFor = Exception.class)
 	public boolean save(Auth auth) {
 		db.saveOrUpdate(auth);

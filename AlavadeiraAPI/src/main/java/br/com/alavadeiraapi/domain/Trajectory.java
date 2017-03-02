@@ -12,9 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
 @Entity
 @Table(name = "trajectory")
 public class Trajectory implements Serializable{
@@ -23,49 +21,30 @@ public class Trajectory implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_trajec", unique = true, nullable = false)
-	private Integer trajectoryId;
+	private Integer id;
 	@Column(name = "name", nullable = false, length = 10)
 	private String name;
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "trajectories")
 	private List<Driver> drivers = new ArrayList<Driver>(0);
 	
-	public Trajectory() {
-	}
-
-	public Trajectory(String name) {
-		this.name = name;
-	}
-
-	public Trajectory(String name,  List<Driver> drivers) {
-		this.name = name;
-		this.drivers = drivers;
-	}
-	
 	public Integer getTrajectoryId() {
-		return trajectoryId;
+		return id;
 	}
-	
-	public void setTrajectoryId(Integer trajectoryId) {
-		this.trajectoryId = trajectoryId;
+	public void setTrajectoryId(Integer id_trajectory) {
+		this.id = id_trajectory;
 	}
-	
 	public String getName() {
 		return name;
 	}
-	
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-
 	public List<Driver> getDrivers() {
 		return drivers;
 	}
-	
 	public void setDrivers(List<Driver> drivers) {
 		this.drivers = drivers;
 	}
-	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
