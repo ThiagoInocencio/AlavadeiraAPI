@@ -1,5 +1,5 @@
 # aLavadeira API
-A Java API implementation following the documentation developed by codus tecnologia.
+A Java RESTful API implementation following the documentation developed by codus tecnologia.
 
 RESTful API to retrieve and update aLavadeira's deliverables and visits, used as a part of the final project of the Specialization in Multi-platform Development powered by SENAI, JPMORGAN and ENDEAVOR.
 
