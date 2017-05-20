@@ -5,7 +5,7 @@ REST API to retrieve and update aLavadeira's deliverables and visits, used as a 
 
 ## Authenticate
 
-###Requesting an authentication
+### Requesting an authentication
 To access other web services you need to have the access token returned by this end point.
 
 **POST** AlavadeiraAPI/rest/authenticate
@@ -27,7 +27,7 @@ profile_type\* | String | Profile to be authenticated (driver, admin, operator) 
 }
 ```
 
-####Response of authentication
+#### Response of authentication
 Success:
 
 Field   | Type   | Description                         | Example
@@ -131,10 +131,10 @@ Response:
 status: 422
 ```
 
-###Using the authentication token
+### Using the authentication token
 Send the token as a header parameter named "X-API-TOKEN" on all requests, except authentication.
 
-####Response with missing or invalid authentication token
+#### Response with missing or invalid authentication token
 
 Error:
 
@@ -151,7 +151,7 @@ status: 401
 
 ## Visits
 
-###Requesting visits by driver
+### Requesting visits by driver
 Retrieve visits by driver's ID and scheduled visit date.
 
 If the scheduled_for parameter is omitted, then it will return today's scheduled visits.
@@ -168,7 +168,7 @@ scheduled_for | Scheduled date _yyyy-mm-dd_
 
 `AlavadeiraAPI/rest/visits/1/2017-03-02`
 
-####Response of visits by driver
+#### Response of visits by driver
 
 Success:
 
