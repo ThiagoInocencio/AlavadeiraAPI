@@ -347,3 +347,160 @@ message | String | Response message | `"message": "Invalid parameters"`
 },
 status: 400
 ```
+
+###Requesting visit confirmation
+Send confirmed deliverables and collectables from visit.
+If deliverables array is empty, it will be assumed that nothing was delivered.
+If collectables array is empty, it will be assumed that nothing was collected.
+
+**PUT** /visits/:id/confirm
+
+Parameters:
+
+Param | Description
+----- | -----------
+id\*  | Visit's ID
+\*required
+
+`/visits/2/confirm`
+
+Content type: JSON
+
+Field          | Type   | Description                                        | Example
+-------------- | ------ | -------------------------------------------------- | ----------------------------------------
+visited_at\*   | String | Confirmation date and time _yyyy-mm-ddTHH:MM:SS+z_ | `"visited_at": "2000-12-30T09:45-03:00"`
+deliverables\* | Array  | Array of deliverables                              | `"deliverables": [{}, {}, {}]`
+collectables\* | Array  | Array of collectables                              | `"collectables": [{}, {}, {}]`
+driver_notes          | String | Observations/notes about the visit | `"driver_notes": "Nenhum responsável para coletar"`
+\*required
+
+Deliverable Object:
+
+Field     | Type   | Description                          | Example
+--------- | ------ | ------------------------------------ | -------------------------
+barcode\* | String | Barcode of the confirmed deliverable | `"barcode": "0000000100"`
+type\*    | String | Deliverable's type (bag, hanger, other)        | `"type": "hanger"`
+\*required
+
+Collectable Object:
+
+Field     | Type   | Description                          | Example
+--------- | ------ | ------------------------------------ | -------------------------
+barcode\* | String | Barcode of the confirmed collectable | `"barcode": "9000000001"`
+type\*    | String | Collectable's type (bag)             | `"type": "bag"`
+\*required
+
+```json
+{
+  "visited_at": "2000-12-30T09:45-03:00",
+  "driver_notes": "Custom comments",
+  "deliverables": [
+    {
+      "barcode": "0000000100",
+      "type": "bag"
+    },
+    {
+      "barcode": "0000000101",
+      "type": "other"
+    },
+    {
+      "barcode": "0000000110",
+      "type": "hanger"
+    },
+    {
+      "barcode": "0000440110",
+      "type": "hanger"
+    }
+  ],
+  "collectables": [
+    {
+      "barcode": "9000000001",
+      "type": "bag"
+    }
+  ]
+}
+```
+
+####Response
+
+Success:
+
+Field   | Type   | Description      | Example
+------- | ------ | ---------------- | ----------------------
+message | String | Response message | `"message": "Success"`
+
+```json
+{
+  "message": "Success"
+},
+status: 200
+```
+
+Error:
+
+Field   | Type   | Description      | Example
+------- | ------ | ---------------- | ---------------------------------
+message | String | Response message | `"message": "Invalid parameters"`
+
+```json
+{
+  "message": "Invalid parameters or content"
+},
+status: 400
+```
+
+###Marking a visit as not completed
+If the visit couldn't be completed. None of the deliverables will be marked as finished and they will be rescheduled for the next visit.
+
+**PUT** /visits/:id/mark-as-not-completed
+
+Parameters:
+
+Param | Description
+----- | -----------
+id\*  | Visit's ID
+\*required
+
+
+Content type: JSON
+
+Field         | Type   | Description                          | Example
+------------- | ------ | ------------------------------------ | --------------------------------------------------
+reason\*      | String | Reason for not completing the visit (missing_client, access_not_allowed, wrong_package, other)   | `"observation": "Nenhum responsável para coletar"`
+driver_notes         | String | Observations/notes about the visit | `"notes": "Nenhum responsável para coletar"`
+\*required
+
+```json
+{
+  "reason": "missing_client",
+  "driver_notes": "Nenhum responsável para coletar"
+}
+```
+
+####Response
+
+Success:
+
+Field   | Type   | Description      | Example
+------- | ------ | ---------------- | ----------------------
+message | String | Response message | `"message": "Success"`
+
+```json
+{
+  "message": "Success"
+},
+status: 200
+```
+
+Error:
+
+Field   | Type   | Description      | Example
+------- | ------ | ---------------- | ---------------------------------
+message | String | Response message | `"message": "Invalid parameters"`
+
+```json
+{
+  "message": "Invalid parameters or content"
+},
+status: 400
+```
